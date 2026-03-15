@@ -4,21 +4,23 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Shawkat Ali | Academic Homepage</title>
-  <meta name="description" content="Academic homepage of Shawkat Ali, Ph.D. candidate at Jiangsu University, working on signal processing, electrical machine condition monitoring, and induction motor fault diagnosis." />
+  <meta name="description" content="Academic homepage of Shawkat Ali, Ph.D. candidate at Jiangsu University, working on electrical machine diagnostics, signal processing, and induction motor fault diagnosis." />
   <style>
     :root {
-      --bg: #f6f8fb;
-      --surface: #ffffff;
-      --surface-2: #f1f4f9;
-      --text: #142033;
-      --muted: #5e6b82;
-      --line: #dbe3ef;
-      --primary: #153e75;
-      --primary-2: #2459a6;
-      --accent: #e8eef9;
-      --shadow: 0 16px 40px rgba(18, 35, 66, 0.08);
-      --radius: 22px;
-      --max: 1160px;
+      --bg: #f4f7fb;
+      --surface: rgba(255,255,255,0.88);
+      --surface-strong: #ffffff;
+      --surface-soft: #f7faff;
+      --text: #162337;
+      --muted: #5f6f86;
+      --line: #d9e3f0;
+      --primary: #153d75;
+      --primary-2: #2563c7;
+      --primary-3: #eaf1ff;
+      --shadow: 0 18px 40px rgba(20, 35, 60, 0.08);
+      --shadow-soft: 0 10px 24px rgba(20, 35, 60, 0.06);
+      --radius: 24px;
+      --max: 1180px;
     }
 
     * { box-sizing: border-box; }
@@ -28,10 +30,29 @@
       font-family: "Inter", "Segoe UI", Arial, sans-serif;
       color: var(--text);
       background:
-        radial-gradient(circle at top left, #eef4ff 0%, transparent 30%),
-        radial-gradient(circle at top right, #eff8f6 0%, transparent 24%),
-        var(--bg);
-      line-height: 1.7;
+        radial-gradient(circle at top left, rgba(101, 143, 255, 0.14) 0%, transparent 28%),
+        radial-gradient(circle at top right, rgba(64, 180, 120, 0.10) 0%, transparent 22%),
+        linear-gradient(180deg, #f8fbff 0%, #f4f7fb 100%);
+      line-height: 1.72;
+    }
+
+    body.dark {
+      --bg: #0e1625;
+      --surface: rgba(18,28,44,0.86);
+      --surface-strong: #152033;
+      --surface-soft: #1a273c;
+      --text: #ecf2ff;
+      --muted: #a6b4cb;
+      --line: #2a3a54;
+      --primary: #8cb5ff;
+      --primary-2: #6ea2ff;
+      --primary-3: #172846;
+      --shadow: 0 18px 40px rgba(0, 0, 0, 0.30);
+      --shadow-soft: 0 10px 24px rgba(0, 0, 0, 0.24);
+      background:
+        radial-gradient(circle at top left, rgba(79, 120, 220, 0.18) 0%, transparent 28%),
+        radial-gradient(circle at top right, rgba(55, 170, 130, 0.10) 0%, transparent 24%),
+        linear-gradient(180deg, #0d1624 0%, #0b1220 100%);
     }
 
     img { max-width: 100%; display: block; }
@@ -46,68 +67,108 @@
     .topbar {
       position: sticky;
       top: 0;
-      z-index: 50;
-      backdrop-filter: blur(12px);
-      background: rgba(246, 248, 251, 0.82);
-      border-bottom: 1px solid rgba(219, 227, 239, 0.75);
+      z-index: 100;
+      backdrop-filter: blur(14px);
+      background: color-mix(in srgb, var(--bg) 82%, transparent);
+      border-bottom: 1px solid color-mix(in srgb, var(--line) 78%, transparent);
     }
 
     .nav {
+      min-height: 76px;
       display: flex;
       align-items: center;
       justify-content: space-between;
       gap: 16px;
-      min-height: 74px;
     }
 
     .brand {
-      font-size: 1.15rem;
-      font-weight: 700;
-      letter-spacing: 0.02em;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 800;
       color: var(--primary);
+      letter-spacing: 0.01em;
+    }
+
+    .brand-mark {
+      width: 40px;
+      height: 40px;
+      border-radius: 14px;
+      background: linear-gradient(135deg, var(--primary) 0%, var(--primary-2) 100%);
+      color: white;
+      display: grid;
+      place-items: center;
+      font-weight: 800;
+      box-shadow: var(--shadow-soft);
     }
 
     .nav-links {
       display: flex;
+      align-items: center;
       flex-wrap: wrap;
       gap: 18px;
-      font-size: 0.95rem;
     }
 
     .nav-links a {
       color: var(--muted);
-      font-weight: 600;
+      font-size: 0.95rem;
+      font-weight: 700;
+    }
+
+    .toggle {
+      border: 1px solid var(--line);
+      background: var(--surface-strong);
+      color: var(--text);
+      border-radius: 999px;
+      padding: 10px 14px;
+      font-weight: 700;
+      cursor: pointer;
+      box-shadow: var(--shadow-soft);
     }
 
     .hero {
-      padding: 48px 0 28px;
+      padding: 44px 0 30px;
     }
 
     .hero-card {
       display: grid;
-      grid-template-columns: 330px 1fr;
-      gap: 36px;
+      grid-template-columns: 320px 1fr;
+      gap: 34px;
       align-items: center;
-      background: linear-gradient(135deg, #ffffff 0%, #f8fbff 100%);
-      border: 1px solid var(--line);
-      border-radius: 30px;
-      box-shadow: var(--shadow);
       padding: 34px;
+      border-radius: 32px;
+      background: linear-gradient(135deg, color-mix(in srgb, var(--surface-strong) 94%, transparent) 0%, color-mix(in srgb, var(--surface-soft) 84%, transparent) 100%);
+      border: 1px solid var(--line);
+      box-shadow: var(--shadow);
     }
 
-    .portrait-wrap {
+    .portrait-shell {
+      position: relative;
       display: flex;
       justify-content: center;
+      align-items: center;
+    }
+
+    .portrait-shell::before {
+      content: "";
+      position: absolute;
+      inset: auto;
+      width: 280px;
+      height: 280px;
+      border-radius: 32px;
+      background: linear-gradient(135deg, color-mix(in srgb, var(--primary) 20%, transparent) 0%, color-mix(in srgb, var(--primary-2) 8%, transparent) 100%);
+      transform: rotate(-6deg);
     }
 
     .portrait {
-      width: 280px;
-      aspect-ratio: 1 / 1.35;
+      position: relative;
+      width: 270px;
+      aspect-ratio: 1 / 1.12;
       object-fit: cover;
       border-radius: 28px;
       border: 1px solid var(--line);
-      background: linear-gradient(135deg, #dfe8f7, #f4f7fc);
-      box-shadow: 0 14px 34px rgba(20, 32, 51, 0.12);
+      background: linear-gradient(135deg, #dbe7fb, #f4f7fc);
+      box-shadow: 0 20px 40px rgba(20, 35, 60, 0.16);
     }
 
     .eyebrow {
@@ -116,19 +177,18 @@
       gap: 8px;
       padding: 8px 14px;
       border-radius: 999px;
-      background: var(--accent);
+      background: var(--primary-3);
       color: var(--primary);
       font-size: 0.9rem;
-      font-weight: 700;
+      font-weight: 800;
       margin-bottom: 14px;
     }
 
     h1 {
       margin: 0 0 12px;
-      font-size: clamp(2.1rem, 4vw, 3.4rem);
-      line-height: 1.12;
-      letter-spacing: -0.03em;
-      color: #10233f;
+      font-size: clamp(2.2rem, 4vw, 3.6rem);
+      line-height: 1.08;
+      letter-spacing: -0.035em;
     }
 
     .lead {
@@ -152,18 +212,22 @@
       padding: 10px 14px;
       border: 1px solid var(--line);
       border-radius: 999px;
-      background: #fff;
-      color: #31425f;
+      background: color-mix(in srgb, var(--surface-strong) 94%, transparent);
+      color: color-mix(in srgb, var(--text) 88%, transparent);
       font-size: 0.94rem;
-      font-weight: 600;
+      font-weight: 700;
+      box-shadow: var(--shadow-soft);
     }
 
-    .hero-actions {
+    .hero-actions,
+    .quick-links {
       display: flex;
       flex-wrap: wrap;
       gap: 12px;
-      margin-top: 10px;
     }
+
+    .hero-actions { margin-top: 10px; }
+    .quick-links { margin-top: 16px; }
 
     .btn {
       display: inline-flex;
@@ -172,35 +236,28 @@
       gap: 8px;
       padding: 12px 18px;
       border-radius: 14px;
-      font-weight: 700;
+      font-weight: 800;
       border: 1px solid transparent;
-      transition: transform 0.18s ease, box-shadow 0.18s ease;
+      transition: transform 0.18s ease, box-shadow 0.18s ease, background 0.18s ease;
     }
 
-    .btn:hover {
-      transform: translateY(-1px);
-      text-decoration: none;
-    }
+    .btn:hover { transform: translateY(-1px); text-decoration: none; }
 
     .btn-primary {
       background: linear-gradient(135deg, var(--primary) 0%, var(--primary-2) 100%);
-      color: #fff;
-      box-shadow: 0 12px 24px rgba(28, 70, 130, 0.22);
+      color: white;
+      box-shadow: 0 12px 26px rgba(37, 99, 199, 0.24);
     }
 
     .btn-secondary {
-      background: #fff;
+      background: var(--surface-strong);
       color: var(--primary);
       border-color: var(--line);
+      box-shadow: var(--shadow-soft);
     }
 
-    main {
-      padding-bottom: 64px;
-    }
-
-    .section {
-      margin-top: 26px;
-    }
+    main { padding-bottom: 68px; }
+    .section { margin-top: 24px; }
 
     .section-card {
       background: var(--surface);
@@ -212,7 +269,7 @@
 
     .section-head {
       display: flex;
-      align-items: center;
+      align-items: end;
       justify-content: space-between;
       gap: 18px;
       margin-bottom: 18px;
@@ -220,27 +277,21 @@
 
     .section h2 {
       margin: 0;
-      font-size: 1.55rem;
+      font-size: 1.6rem;
       color: var(--primary);
       letter-spacing: -0.02em;
     }
 
     .section-sub {
+      margin: 0;
       color: var(--muted);
       font-size: 0.98rem;
-      margin: 0;
     }
 
     .two-col {
       display: grid;
       grid-template-columns: 1.15fr 0.85fr;
-      gap: 24px;
-    }
-
-    .grid-3 {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 18px;
+      gap: 22px;
     }
 
     .grid-2 {
@@ -249,17 +300,48 @@
       gap: 18px;
     }
 
-    .info-box {
-      background: var(--surface-2);
-      border: 1px solid var(--line);
-      border-radius: 18px;
-      padding: 20px;
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
     }
 
-    .info-box h3, .timeline h3, .pub h3, .contact-card h3 {
+    .highlights {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .card,
+    .stat,
+    .pub,
+    .timeline-item,
+    .contact-card {
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      background: color-mix(in srgb, var(--surface-strong) 96%, transparent);
+      padding: 18px;
+      box-shadow: var(--shadow-soft);
+    }
+
+    .card h3,
+    .pub h3,
+    .timeline-item h3,
+    .contact-card h3 {
       margin: 0 0 8px;
-      font-size: 1.05rem;
-      color: #18355d;
+      font-size: 1.06rem;
+      color: color-mix(in srgb, var(--text) 94%, transparent);
+    }
+
+    .card p,
+    .pub p,
+    .timeline-item p,
+    .contact-card p,
+    .section-card p,
+    .stat span,
+    li {
+      margin: 0;
+      color: color-mix(in srgb, var(--text) 82%, transparent);
     }
 
     .muted { color: var(--muted); }
@@ -273,140 +355,143 @@
 
     .tag {
       padding: 8px 12px;
-      background: #f8fbff;
-      border: 1px solid var(--line);
       border-radius: 999px;
+      border: 1px solid var(--line);
+      background: color-mix(in srgb, var(--primary-3) 70%, var(--surface-strong));
+      color: color-mix(in srgb, var(--text) 85%, transparent);
       font-size: 0.9rem;
-      color: #30415d;
-      font-weight: 600;
+      font-weight: 700;
     }
 
-    .timeline-list, .pub-list, .simple-list {
+    .timeline-list,
+    .pub-list {
       display: grid;
       gap: 16px;
-    }
-
-    .timeline-item, .pub, .contact-card {
-      border: 1px solid var(--line);
-      border-radius: 18px;
-      padding: 18px 18px 16px;
-      background: #fff;
     }
 
     .time {
       display: inline-block;
       margin-bottom: 8px;
-      font-size: 0.88rem;
-      font-weight: 700;
-      color: var(--primary-2);
-      background: #eef4ff;
-      border-radius: 999px;
       padding: 6px 10px;
-    }
-
-    .timeline-item p,
-    .pub p,
-    .contact-card p,
-    .section-card p,
-    .info-box p,
-    .simple-list li {
-      margin: 0;
-      color: #34425a;
+      border-radius: 999px;
+      background: var(--primary-3);
+      color: var(--primary);
+      font-size: 0.86rem;
+      font-weight: 800;
     }
 
     .pub-title {
-      font-weight: 700;
-      color: #17355d;
       margin-bottom: 6px;
+      font-size: 1.03rem;
+      font-weight: 800;
+      color: color-mix(in srgb, var(--text) 96%, transparent);
     }
 
     .pub-meta {
+      margin-bottom: 8px;
       color: var(--muted);
       font-size: 0.96rem;
-      margin-bottom: 8px;
     }
 
     ul.clean {
       margin: 0;
       padding-left: 18px;
-      color: #34425a;
-    }
-
-    .highlights {
-      display: grid;
-      grid-template-columns: repeat(4, minmax(0, 1fr));
-      gap: 16px;
-    }
-
-    .stat {
-      padding: 18px;
-      border-radius: 18px;
-      background: linear-gradient(180deg, #ffffff 0%, #f6f9ff 100%);
-      border: 1px solid var(--line);
     }
 
     .stat strong {
       display: block;
-      font-size: 1.8rem;
-      line-height: 1.1;
-      color: var(--primary);
       margin-bottom: 8px;
+      font-size: 1.8rem;
+      line-height: 1;
+      color: var(--primary);
+    }
+
+    .research-panels {
+      display: grid;
+      grid-template-columns: 1.05fr 0.95fr;
+      gap: 18px;
+    }
+
+    .feature-list {
+      display: grid;
+      gap: 14px;
+      margin-top: 14px;
+    }
+
+    .feature {
+      display: grid;
+      grid-template-columns: 42px 1fr;
+      gap: 12px;
+      align-items: start;
+    }
+
+    .icon {
+      width: 42px;
+      height: 42px;
+      border-radius: 14px;
+      display: grid;
+      place-items: center;
+      background: var(--primary-3);
+      color: var(--primary);
+      font-weight: 800;
+      border: 1px solid var(--line);
     }
 
     .footer {
       padding: 24px 0 54px;
       color: var(--muted);
-      font-size: 0.94rem;
       text-align: center;
+      font-size: 0.94rem;
     }
 
-    @media (max-width: 980px) {
+    @media (max-width: 1040px) {
       .hero-card,
       .two-col,
+      .research-panels,
       .grid-3,
       .grid-2,
       .highlights {
         grid-template-columns: 1fr;
       }
+    }
 
-      .portrait {
-        width: min(100%, 300px);
-      }
-
+    @media (max-width: 860px) {
       .nav {
         align-items: flex-start;
         flex-direction: column;
         padding: 14px 0;
       }
+
+      .hero-card {
+        padding: 22px;
+      }
+
+      .portrait {
+        width: min(100%, 290px);
+      }
     }
 
     @media (max-width: 640px) {
-      .hero-card,
-      .section-card {
-        padding: 20px;
-      }
-
-      .container {
-        width: min(var(--max), calc(100% - 20px));
-      }
-
-      .nav-links {
-        gap: 12px;
-      }
+      .container { width: min(var(--max), calc(100% - 20px)); }
+      .section-card { padding: 20px; }
+      .nav-links { gap: 12px; }
     }
   </style>
 </head>
 <body>
   <header class="topbar">
     <div class="container nav">
-      <div class="brand">Shawkat Ali</div>
+      <div class="brand">
+        <div class="brand-mark">SA</div>
+        <span>Shawkat Ali</span>
+      </div>
       <nav class="nav-links">
         <a href="#about">About</a>
         <a href="#research">Research</a>
         <a href="#publications">Publications</a>
         <a href="#experience">Experience</a>
-        <a href="#awards">Awards</a>
         <a href="#contact">Contact</a>
+        <button class="toggle" id="themeToggle" type="button">Dark mode</button>
       </nav>
     </div>
   </header>
@@ -414,16 +499,15 @@
   <main class="container">
     <section class="hero">
       <div class="hero-card">
-        <div class="portrait">
-          <img src="profile.png" alt="Shawkat Ali" class="portrait" />
+        <div class="portrait-shell">
+          <img src="profile.jpg" alt="Portrait of Shawkat Ali" class="portrait" />
         </div>
         <div>
           <div class="eyebrow">Ph.D. Candidate • Jiangsu University</div>
           <h1>Shawkat Ali</h1>
           <p class="lead">
-            Ph.D. candidate in Control Science and Engineering at Jiangsu University, working on signal processing,
-            electrical machine condition monitoring, and induction motor fault diagnosis, with particular emphasis on
-            advanced diagnostic techniques for incipient broken rotor bar faults.
+            I work on electrical machine condition monitoring, signal processing, and induction motor fault diagnosis,
+            with a particular focus on computationally efficient and reliable methods for detecting incipient broken rotor bar faults.
           </p>
 
           <div class="meta">
@@ -434,9 +518,15 @@
           </div>
 
           <div class="hero-actions">
-            <a class="btn btn-primary" href="CV.pdf" target="_blank">Download CV</a>
+            <a class="btn btn-primary" href="SHAWKAT%20ALI%20CV.pdf" target="_blank">Download CV</a>
             <a class="btn btn-secondary" href="mailto:engrshaukatswati@gmail.com">Email Me</a>
-            <a class="btn btn-secondary" href="#publications">View Publications</a>
+            <a class="btn btn-secondary" href="#publications">Selected Publications</a>
+          </div>
+
+          <div class="quick-links">
+            <a class="btn btn-secondary" href="https://github.com/shawkat868" target="_blank">GitHub</a>
+            <a class="btn btn-secondary" href="#">Google Scholar</a>
+            <a class="btn btn-secondary" href="#">LinkedIn</a>
           </div>
         </div>
       </div>
@@ -446,19 +536,19 @@
       <div class="highlights">
         <div class="stat">
           <strong>3</strong>
-          <span>Journal papers in 2026 pipeline, including accepted and under-review work on broken rotor bar diagnosis.</span>
+          <span>Recent papers focused on broken rotor bar diagnosis using Goertzel analysis, rectification, envelope analysis, and dual confirmation methods.</span>
         </div>
         <div class="stat">
           <strong>6+</strong>
-          <span>Years of university teaching and academic mentoring experience at the University of Swat.</span>
-        </div>
-        <div class="stat">
-          <strong>2</strong>
-          <span>Core research tracks spanning electrical machine diagnostics and consensus control of multi-agent systems.</span>
+          <span>Years of university teaching experience, including course delivery, supervision, and engineering education support.</span>
         </div>
         <div class="stat">
           <strong>IEEE</strong>
-          <span>Reviewer service for IEEE Access, IEEE TIM, and IEEE JERM.</span>
+          <span>Reviewer service for IEEE Access, IEEE Transactions on Instrumentation and Measurement, and IEEE JERM.</span>
+        </div>
+        <div class="stat">
+          <strong>CSC</strong>
+          <span>China Scholarship Council support during doctoral study, together with research recognition and academic awards.</span>
         </div>
       </div>
     </section>
@@ -468,34 +558,28 @@
         <div class="section-head">
           <div>
             <h2>About</h2>
-            <p class="section-sub">Academic profile and current focus</p>
+            <p class="section-sub">Academic profile and present direction</p>
           </div>
         </div>
 
         <div class="two-col">
           <div>
             <p>
-              I am a Ph.D. candidate in Control Science and Engineering at Jiangsu University. My doctoral work focuses on
-              advanced diagnostic techniques for incipient broken rotor bar faults in induction motors. My broader research
-              interest lies in intelligent diagnostics for rotating electrical machines, especially sensorless and computationally
-              efficient approaches based on current signatures and signal processing.
+              I am a Ph.D. candidate in Control Science and Engineering at Jiangsu University. My doctoral research investigates advanced diagnostic techniques for incipient broken rotor bar faults in induction motors. I am particularly interested in sensorless and low-cost diagnostic frameworks that can improve reliability under weak fault signatures, spectral interference, and low-frequency operating conditions.
             </p>
             <p>
-              Alongside research, I have experience in teaching, embedded and computer systems, telecommunications support,
-              and interdisciplinary engineering applications. I am interested in contributing to high-quality research in intelligent
-              diagnostics, electrical machines, signal processing, and engineering systems that connect theory with deployable practice.
+              My broader interests include signal processing for electrical machines, practical monitoring methods for industrial systems, and intelligent diagnostic approaches that connect theory, experimental validation, and real-world implementation.
             </p>
           </div>
-
-          <div class="info-box">
+          <div class="card">
             <h3>Research Interests</h3>
             <div class="tags">
               <span class="tag">Motor fault diagnosis</span>
-              <span class="tag">Electrical machine monitoring</span>
-              <span class="tag">Signal processing</span>
-              <span class="tag">Machine learning for diagnostics</span>
-              <span class="tag">Industrial monitoring</span>
               <span class="tag">Current signature analysis</span>
+              <span class="tag">Electrical machine monitoring</span>
+              <span class="tag">Goertzel-based estimation</span>
+              <span class="tag">Envelope analysis</span>
+              <span class="tag">Machine learning for diagnostics</span>
             </div>
           </div>
         </div>
@@ -507,31 +591,54 @@
         <div class="section-head">
           <div>
             <h2>Research Overview</h2>
-            <p class="section-sub">Themes, methods, and applied direction</p>
+            <p class="section-sub">Main themes and technical emphasis</p>
           </div>
         </div>
 
-        <div class="grid-3">
-          <div class="info-box">
-            <h3>Induction Motor Fault Diagnosis</h3>
+        <div class="research-panels">
+          <div class="card">
+            <h3>Current Research Focus</h3>
             <p>
-              Development of reliable methods for early detection of broken rotor bar faults under weak-signature conditions,
-              including incipient faults, low load, and challenging spectral environments.
+              My current work centers on reliable diagnosis of broken rotor bar faults in induction motors, especially under conditions where fault signatures are weak, masked, or strongly affected by supply-related spectral components.
             </p>
+            <div class="feature-list">
+              <div class="feature">
+                <div class="icon">1</div>
+                <div>
+                  <h3>Weak fault signature extraction</h3>
+                  <p>Improving incipient fault visibility under low load and low-frequency operation.</p>
+                </div>
+              </div>
+              <div class="feature">
+                <div class="icon">2</div>
+                <div>
+                  <h3>Computational efficiency</h3>
+                  <p>Designing low-cost methods suitable for practical monitoring and real deployment.</p>
+                </div>
+              </div>
+              <div class="feature">
+                <div class="icon">3</div>
+                <div>
+                  <h3>Reliability and confirmation</h3>
+                  <p>Reducing false positives through slip confirmation and dual-signature consistency.</p>
+                </div>
+              </div>
+            </div>
           </div>
-          <div class="info-box">
-            <h3>Signal Processing Methods</h3>
-            <p>
-              Use of envelope analysis, Goertzel-based spectral estimation, orthogonal-axis rectification, APCA, and dual-signature
-              confirmation strategies to improve diagnostic confidence and reduce false positives.
-            </p>
-          </div>
-          <div class="info-box">
-            <h3>Practical Engineering Deployment</h3>
-            <p>
-              Emphasis on low-cost, sensorless, and computationally efficient diagnostic frameworks suitable for laboratory validation,
-              industrial monitoring, and future intelligent maintenance systems.
-            </p>
+
+          <div class="grid-3" style="grid-template-columns:1fr;">
+            <div class="card">
+              <h3>Signal Processing Methods</h3>
+              <p>Envelope analysis, orthogonal-axis rectification, Goertzel estimation, adaptive PCA, and fault-sensitive component extraction.</p>
+            </div>
+            <div class="card">
+              <h3>Application Goal</h3>
+              <p>Robust, sensorless, and experimentally validated diagnostic methods for induction motors in realistic working conditions.</p>
+            </div>
+            <div class="card">
+              <h3>Broader Direction</h3>
+              <p>Intelligent diagnostics for rotating electrical machines and practical condition monitoring in industrial environments.</p>
+            </div>
           </div>
         </div>
       </div>
@@ -542,7 +649,7 @@
         <div class="section-head">
           <div>
             <h2>Selected Publications</h2>
-            <p class="section-sub">Accepted, under-review, and prior scholarly work</p>
+            <p class="section-sub">Scholarly work and recent paper pipeline</p>
           </div>
         </div>
 
@@ -550,36 +657,25 @@
           <article class="pub">
             <div class="pub-title">Orthogonal Axis Rectification and Goertzel Analysis for Reliable Detection of Broken Rotor Bar Faults in Induction Motor</div>
             <div class="pub-meta">S. Ali, X. Song, W. Zhao, and H. Fan • Chinese Journal of Electrical Engineering • Accepted, 2026</div>
-            <p>
-              Presents a reliable diagnostic framework for broken rotor bar detection using orthogonal-axis rectification and Goertzel analysis,
-              with strong performance under low-load and low-frequency operating conditions.
-            </p>
+            <p>This work develops a reliable diagnostic framework for broken rotor bar detection by combining orthogonal-axis rectification with Goertzel analysis, especially for low-load and low-frequency operation.</p>
           </article>
 
           <article class="pub">
             <div class="pub-title">A Dual-Signature Rotor Fault Diagnosis Method Using Envelope Modulation and Slip Confirmation</div>
             <div class="pub-meta">S. Ali, X. Song, and W. Zhao • Chinese Journal of Electrical Engineering • Accepted, 2026</div>
-            <p>
-              Proposes a dual-confirmation strategy that combines envelope modulation and slip-based consistency checking to enhance the reliability
-              of broken rotor bar diagnosis.
-            </p>
+            <p>This paper proposes a dual-confirmation strategy using envelope modulation and slip-based consistency checking to strengthen diagnostic reliability and reduce false positives.</p>
           </article>
 
           <article class="pub">
             <div class="pub-title">A Novel Cost-Effective Fault Diagnosis Method for Incipient Detection of Broken Rotor Bar in Induction Motor</div>
             <div class="pub-meta">S. Ali, X. Song, and W. Zhao • IEEJ Transactions on Electrical and Electronic Engineering • Under review, 2026</div>
-            <p>
-              Introduces a low-cost framework using adaptive principal component analysis and Goertzel-based estimation for incipient rotor bar fault detection,
-              with a sensorless confirmation mechanism based on rotor-speed-related frequency estimation.
-            </p>
+            <p>This study presents a low-cost incipient rotor fault diagnosis framework using adaptive principal component analysis and Goertzel-based estimation, together with a sensorless confirmation mechanism.</p>
           </article>
 
           <article class="pub">
             <div class="pub-title">A practical approach to consensus based control of multi-agent systems</div>
-            <div class="pub-meta">S. Ali, S. Ahmed, and S. N. Khan Marwat • 2018 International Symposium on Recent Advances in Electrical Engineering (RAEE)</div>
-            <p>
-              Earlier work on distributed consensus control, addressing coordination and power mismatch problems in multi-agent systems.
-            </p>
+            <div class="pub-meta">S. Ali, S. Ahmed, and S. N. Khan Marwat • 2018 International Symposium on Recent Advances in Electrical Engineering</div>
+            <p>An earlier contribution on consensus-based control for multi-agent systems, addressing coordination and power mismatch issues in distributed control settings.</p>
           </article>
         </div>
       </div>
@@ -590,7 +686,7 @@
         <div class="section-head">
           <div>
             <h2>Education</h2>
-            <p class="section-sub">Academic training</p>
+            <p class="section-sub">Degrees and dissertation topics</p>
           </div>
         </div>
 
@@ -621,8 +717,8 @@
       <div class="section-card">
         <div class="section-head">
           <div>
-            <h2>Professional Experience</h2>
-            <p class="section-sub">Teaching, research, and industry experience</p>
+            <h2>Experience</h2>
+            <p class="section-sub">Teaching, industry, and research roles</p>
           </div>
         </div>
 
@@ -631,57 +727,53 @@
             <span class="time">Aug 2022 – Mar 2023</span>
             <h3>DOC Engineer</h3>
             <p class="muted">Global Service Center, Huawei Technologies, Islamabad, Pakistan</p>
-            <p>Worked in network and IT system integration shared service delivery, with quality assurance control and project support for the PHP GLOBE FBB project.</p>
+            <p>Worked in shared service delivery, quality assurance control, and project support in network and IT systems integration.</p>
           </div>
-
           <div class="timeline-item">
             <span class="time">Sep 2015 – Aug 2022</span>
             <h3>Visiting Lecturer</h3>
             <p class="muted">University of Swat, Pakistan</p>
-            <p>Taught core courses in computer engineering and related subjects, and designed course materials, examinations, and student assessments.</p>
+            <p>Taught computer engineering-related courses and supported student learning, evaluation, and academic mentoring.</p>
           </div>
-
           <div class="timeline-item">
             <span class="time">Aug 2014 – Aug 2015</span>
             <h3>Research Assistant</h3>
             <p class="muted">University of Engineering &amp; Technology, Peshawar, Pakistan</p>
-            <p>Designed hardware and algorithms for automatic OBD-II protocol implementation and contributed to a real-time vehicle monitoring and management system.</p>
+            <p>Contributed to hardware and algorithm design for automatic OBD-II protocol implementation and a real-time vehicle monitoring system.</p>
           </div>
         </div>
       </div>
     </section>
 
-    <section id="awards" class="section">
+    <section class="section">
       <div class="section-card">
         <div class="section-head">
           <div>
             <h2>Awards, Service, and Skills</h2>
-            <p class="section-sub">Academic recognition and professional contribution</p>
+            <p class="section-sub">Recognition and professional profile</p>
           </div>
         </div>
 
         <div class="grid-3">
-          <div class="info-box">
+          <div class="card">
             <h3>Honors and Awards</h3>
             <ul class="clean">
               <li>Excellent Project Award, Discover Jiangsu International Summer Program, Jiangsu University, 2024</li>
-              <li>CSC Scholarship, P.R. China, 2023–2026</li>
-              <li>Travel Grant / Research Assistantship Support, UET Peshawar, 2018</li>
+              <li>CSC Scholarship, 2023–2026</li>
+              <li>Research support and travel grant recognition, UET Peshawar, 2018</li>
               <li>Final Year Project distinction under an HEC Pakistan-funded project, 2014</li>
             </ul>
           </div>
-
-          <div class="info-box">
+          <div class="card">
             <h3>Professional Service</h3>
             <ul class="clean">
               <li>Reviewer for IEEE Access</li>
               <li>Reviewer for IEEE Transactions on Instrumentation and Measurement</li>
               <li>Reviewer for IEEE Journal of Emerging and Selected Topics in Industrial Electronics</li>
-              <li>Academic and student leadership roles at UET Peshawar</li>
+              <li>Academic and student leadership roles in earlier study years</li>
             </ul>
           </div>
-
-          <div class="info-box">
+          <div class="card">
             <h3>Technical Skills</h3>
             <ul class="clean">
               <li>Programming: C, C++, C#, Python, Verilog HDL, PHP, HTML</li>
@@ -699,7 +791,7 @@
         <div class="section-head">
           <div>
             <h2>Contact</h2>
-            <p class="section-sub">Academic correspondence and links</p>
+            <p class="section-sub">Academic correspondence and online profiles</p>
           </div>
         </div>
 
@@ -709,15 +801,11 @@
             <p><a href="mailto:engrshaukatswati@gmail.com">engrshaukatswati@gmail.com</a></p>
             <p><a href="mailto:Shawkatali@stmail.ujs.edu.cn">Shawkatali@stmail.ujs.edu.cn</a></p>
           </div>
-
           <div class="contact-card">
             <h3>Profiles</h3>
             <p><a href="https://github.com/shawkat868" target="_blank">GitHub</a></p>
-            <p><a href="https://scholar.google.com/citations?hl=en&view_op=list_works&gmla=AF9nlQuF5YuyCqU9mroGS3DKCpnnCL9INHxUL_qqAZs-RYZFh8CfyLk3bhuxvJ41mc1g51te1Z4IU-cmZaFG-A&user=uFo589IAAAAJ">Google Scholar</a> </p>
-            <p><a href="https://www.linkedin.com/in/shawkat-ali-67354b111">LinkedIn</a> </p>
-            <p><a href="https://webofscience.clarivate.cn/wos/author/record/T-7919-2019">Web of Science</a> </p>
-            <p><a href="https://www.researchgate.net/profile/Shawkat-Ali-5?ev=hdr_xprf">Research Gate</a> </p>
-            <p><a href="https://orcid.org/my-orcid?orcid=0009-0003-3976-2723">ORCID</a> </p>
+            <p><a href="#">Google Scholar</a> <span class="muted">(replace with your link)</span></p>
+            <p><a href="#">LinkedIn</a> <span class="muted">(replace with your link)</span></p>
           </div>
         </div>
       </div>
@@ -727,5 +815,23 @@
   <footer class="footer container">
     © 2026 Shawkat Ali. Built with GitHub Pages.
   </footer>
+
+  <script>
+    const body = document.body;
+    const toggle = document.getElementById('themeToggle');
+    const savedTheme = localStorage.getItem('shawkat-theme');
+
+    if (savedTheme === 'dark') {
+      body.classList.add('dark');
+      toggle.textContent = 'Light mode';
+    }
+
+    toggle.addEventListener('click', () => {
+      body.classList.toggle('dark');
+      const isDark = body.classList.contains('dark');
+      toggle.textContent = isDark ? 'Light mode' : 'Dark mode';
+      localStorage.setItem('shawkat-theme', isDark ? 'dark' : 'light');
+    });
+  </script>
 </body>
 </html>
