@@ -3,122 +3,726 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Shawkat Ali | Academic Portfolio</title>
+  <title>Shawkat Ali | Academic Homepage</title>
+  <meta name="description" content="Academic homepage of Shawkat Ali, Ph.D. candidate at Jiangsu University, working on signal processing, electrical machine condition monitoring, and induction motor fault diagnosis." />
   <style>
+    :root {
+      --bg: #f6f8fb;
+      --surface: #ffffff;
+      --surface-2: #f1f4f9;
+      --text: #142033;
+      --muted: #5e6b82;
+      --line: #dbe3ef;
+      --primary: #153e75;
+      --primary-2: #2459a6;
+      --accent: #e8eef9;
+      --shadow: 0 16px 40px rgba(18, 35, 66, 0.08);
+      --radius: 22px;
+      --max: 1160px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
     body {
-      font-family: Arial, sans-serif;
-      max-width: 900px;
-      margin: 40px auto;
-      padding: 0 20px;
+      margin: 0;
+      font-family: "Inter", "Segoe UI", Arial, sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(circle at top left, #eef4ff 0%, transparent 30%),
+        radial-gradient(circle at top right, #eff8f6 0%, transparent 24%),
+        var(--bg);
       line-height: 1.7;
-      color: #222;
     }
-    h1, h2 {
-      color: #0b3d91;
+
+    img { max-width: 100%; display: block; }
+    a { color: var(--primary-2); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    .container {
+      width: min(var(--max), calc(100% - 32px));
+      margin: 0 auto;
     }
-    .header {
-      border-bottom: 2px solid #ddd;
-      padding-bottom: 15px;
-      margin-bottom: 30px;
+
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      backdrop-filter: blur(12px);
+      background: rgba(246, 248, 251, 0.82);
+      border-bottom: 1px solid rgba(219, 227, 239, 0.75);
     }
-    .section {
-      margin-bottom: 30px;
+
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      min-height: 74px;
     }
-    a {
-      color: #0b3d91;
+
+    .brand {
+      font-size: 1.15rem;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+      color: var(--primary);
+    }
+
+    .nav-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 18px;
+      font-size: 0.95rem;
+    }
+
+    .nav-links a {
+      color: var(--muted);
+      font-weight: 600;
+    }
+
+    .hero {
+      padding: 48px 0 28px;
+    }
+
+    .hero-card {
+      display: grid;
+      grid-template-columns: 330px 1fr;
+      gap: 36px;
+      align-items: center;
+      background: linear-gradient(135deg, #ffffff 0%, #f8fbff 100%);
+      border: 1px solid var(--line);
+      border-radius: 30px;
+      box-shadow: var(--shadow);
+      padding: 34px;
+    }
+
+    .portrait-wrap {
+      display: flex;
+      justify-content: center;
+    }
+
+    .portrait {
+      width: 280px;
+      aspect-ratio: 1 / 1.15;
+      object-fit: cover;
+      border-radius: 28px;
+      border: 1px solid var(--line);
+      background: linear-gradient(135deg, #dfe8f7, #f4f7fc);
+      box-shadow: 0 14px 34px rgba(20, 32, 51, 0.12);
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 14px;
+      border-radius: 999px;
+      background: var(--accent);
+      color: var(--primary);
+      font-size: 0.9rem;
+      font-weight: 700;
+      margin-bottom: 14px;
+    }
+
+    h1 {
+      margin: 0 0 12px;
+      font-size: clamp(2.1rem, 4vw, 3.4rem);
+      line-height: 1.12;
+      letter-spacing: -0.03em;
+      color: #10233f;
+    }
+
+    .lead {
+      margin: 0 0 18px;
+      font-size: 1.06rem;
+      color: var(--muted);
+      max-width: 760px;
+    }
+
+    .meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin: 18px 0 22px;
+    }
+
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 14px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: #fff;
+      color: #31425f;
+      font-size: 0.94rem;
+      font-weight: 600;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 10px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 12px 18px;
+      border-radius: 14px;
+      font-weight: 700;
+      border: 1px solid transparent;
+      transition: transform 0.18s ease, box-shadow 0.18s ease;
+    }
+
+    .btn:hover {
+      transform: translateY(-1px);
       text-decoration: none;
     }
-    ul {
-      padding-left: 20px;
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--primary) 0%, var(--primary-2) 100%);
+      color: #fff;
+      box-shadow: 0 12px 24px rgba(28, 70, 130, 0.22);
     }
-    .small {
-      color: #666;
-      font-size: 0.95em;
+
+    .btn-secondary {
+      background: #fff;
+      color: var(--primary);
+      border-color: var(--line);
+    }
+
+    main {
+      padding-bottom: 64px;
+    }
+
+    .section {
+      margin-top: 26px;
+    }
+
+    .section-card {
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 28px;
+      box-shadow: var(--shadow);
+    }
+
+    .section-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+      margin-bottom: 18px;
+    }
+
+    .section h2 {
+      margin: 0;
+      font-size: 1.55rem;
+      color: var(--primary);
+      letter-spacing: -0.02em;
+    }
+
+    .section-sub {
+      color: var(--muted);
+      font-size: 0.98rem;
+      margin: 0;
+    }
+
+    .two-col {
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 24px;
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .info-box {
+      background: var(--surface-2);
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      padding: 20px;
+    }
+
+    .info-box h3, .timeline h3, .pub h3, .contact-card h3 {
+      margin: 0 0 8px;
+      font-size: 1.05rem;
+      color: #18355d;
+    }
+
+    .muted { color: var(--muted); }
+
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 10px;
+    }
+
+    .tag {
+      padding: 8px 12px;
+      background: #f8fbff;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      font-size: 0.9rem;
+      color: #30415d;
+      font-weight: 600;
+    }
+
+    .timeline-list, .pub-list, .simple-list {
+      display: grid;
+      gap: 16px;
+    }
+
+    .timeline-item, .pub, .contact-card {
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      padding: 18px 18px 16px;
+      background: #fff;
+    }
+
+    .time {
+      display: inline-block;
+      margin-bottom: 8px;
+      font-size: 0.88rem;
+      font-weight: 700;
+      color: var(--primary-2);
+      background: #eef4ff;
+      border-radius: 999px;
+      padding: 6px 10px;
+    }
+
+    .timeline-item p,
+    .pub p,
+    .contact-card p,
+    .section-card p,
+    .info-box p,
+    .simple-list li {
+      margin: 0;
+      color: #34425a;
+    }
+
+    .pub-title {
+      font-weight: 700;
+      color: #17355d;
+      margin-bottom: 6px;
+    }
+
+    .pub-meta {
+      color: var(--muted);
+      font-size: 0.96rem;
+      margin-bottom: 8px;
+    }
+
+    ul.clean {
+      margin: 0;
+      padding-left: 18px;
+      color: #34425a;
+    }
+
+    .highlights {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .stat {
+      padding: 18px;
+      border-radius: 18px;
+      background: linear-gradient(180deg, #ffffff 0%, #f6f9ff 100%);
+      border: 1px solid var(--line);
+    }
+
+    .stat strong {
+      display: block;
+      font-size: 1.8rem;
+      line-height: 1.1;
+      color: var(--primary);
+      margin-bottom: 8px;
+    }
+
+    .footer {
+      padding: 24px 0 54px;
+      color: var(--muted);
+      font-size: 0.94rem;
+      text-align: center;
+    }
+
+    @media (max-width: 980px) {
+      .hero-card,
+      .two-col,
+      .grid-3,
+      .grid-2,
+      .highlights {
+        grid-template-columns: 1fr;
+      }
+
+      .portrait {
+        width: min(100%, 300px);
+      }
+
+      .nav {
+        align-items: flex-start;
+        flex-direction: column;
+        padding: 14px 0;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .hero-card,
+      .section-card {
+        padding: 20px;
+      }
+
+      .container {
+        width: min(var(--max), calc(100% - 20px));
+      }
+
+      .nav-links {
+        gap: 12px;
+      }
     }
   </style>
 </head>
 <body>
+  <header class="topbar">
+    <div class="container nav">
+      <div class="brand">Shawkat Ali</div>
+      <nav class="nav-links">
+        <a href="#about">About</a>
+        <a href="#research">Research</a>
+        <a href="#publications">Publications</a>
+        <a href="#experience">Experience</a>
+        <a href="#awards">Awards</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
 
-  <div class="header">
-    <h1>Shawkat Ali</h1>
-    <p>Ph.D. Candidate in Control Science and Engineering</p>
-    <p>
-      Swat, Pakistan |
-      <a href="mailto:engrshaukatswati@gmail.com">engrshaukatswati@gmail.com</a> |
-      <a href="mailto:Shawkatali@stmail.ujs.edu.cn">Shawkatali@stmail.ujs.edu.cn</a>
-    </p>
-    <p>
-      <a href="https://github.com/yourgithubusername">GitHub</a> |
-      <a href="https://www.linkedin.com/">LinkedIn</a>
-    </p>
-  </div>
+  <main class="container">
+    <section class="hero">
+      <div class="hero-card">
+        <div class="portrait-wrap">
+          <img src="profile.jpg" alt="Portrait of Shawkat Ali" class="portrait" />
+        </div>
+        <div>
+          <div class="eyebrow">Ph.D. Candidate • Jiangsu University</div>
+          <h1>Shawkat Ali</h1>
+          <p class="lead">
+            Ph.D. candidate in Control Science and Engineering at Jiangsu University, working on signal processing,
+            electrical machine condition monitoring, and induction motor fault diagnosis, with particular emphasis on
+            advanced diagnostic techniques for incipient broken rotor bar faults.
+          </p>
 
-  <div class="section">
-    <h2>About Me</h2>
-    <p>
-      I am a Ph.D. candidate in Control Science and Engineering at Jiangsu University.
-      My research focuses on signal processing, electrical machine condition monitoring,
-      and induction motor fault diagnosis, especially advanced diagnostic techniques for
-      incipient broken rotor bar faults.
-    </p>
-  </div>
+          <div class="meta">
+            <span class="pill">Zhenjiang, China / Swat, Pakistan</span>
+            <span class="pill">Electrical machine diagnostics</span>
+            <span class="pill">Signal processing</span>
+            <span class="pill">Condition monitoring</span>
+          </div>
 
-  <div class="section">
-    <h2>Research Interests</h2>
-    <ul>
-      <li>Motor fault diagnosis</li>
-      <li>Condition monitoring of electrical machines</li>
-      <li>Signal processing</li>
-      <li>Machine learning for diagnostics</li>
-      <li>Intelligent industrial monitoring</li>
-    </ul>
-  </div>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="SHAWKAT%20ALI%20CV.pdf" target="_blank">Download CV</a>
+            <a class="btn btn-secondary" href="mailto:engrshaukatswati@gmail.com">Email Me</a>
+            <a class="btn btn-secondary" href="#publications">View Publications</a>
+          </div>
+        </div>
+      </div>
+    </section>
 
-  <div class="section">
-    <h2>Education</h2>
-    <ul>
-      <li><strong>Ph.D. in Control Science and Engineering</strong>, Jiangsu University, China (2020–2026 expected)</li>
-      <li><strong>M.Sc. in Computer Systems Engineering</strong>, UET Peshawar, Pakistan (2016–2018)</li>
-      <li><strong>B.Sc. in Computer Systems Engineering</strong>, UET Peshawar, Pakistan (2010–2014)</li>
-    </ul>
-  </div>
+    <section class="section">
+      <div class="highlights">
+        <div class="stat">
+          <strong>3</strong>
+          <span>Journal papers in 2026 pipeline, including accepted and under-review work on broken rotor bar diagnosis.</span>
+        </div>
+        <div class="stat">
+          <strong>6+</strong>
+          <span>Years of university teaching and academic mentoring experience at the University of Swat.</span>
+        </div>
+        <div class="stat">
+          <strong>2</strong>
+          <span>Core research tracks spanning electrical machine diagnostics and consensus control of multi-agent systems.</span>
+        </div>
+        <div class="stat">
+          <strong>IEEE</strong>
+          <span>Reviewer service for IEEE Access, IEEE TIM, and IEEE JERM.</span>
+        </div>
+      </div>
+    </section>
 
-  <div class="section">
-    <h2>Publications</h2>
-    <ul>
-      <li>Orthogonal Axis Rectification and Goertzel Analysis for Reliable Detection of Broken Rotor Bar Faults in Induction Motor</li>
-      <li>A Dual-Signature Rotor Fault Diagnosis Method Using Envelope Modulation and Slip Confirmation</li>
-      <li>A Novel Cost-Effective Fault Diagnosis Method for Incipient Detection of Broken Rotor Bar in Induction Motor</li>
-    </ul>
-  </div>
+    <section id="about" class="section">
+      <div class="section-card">
+        <div class="section-head">
+          <div>
+            <h2>About</h2>
+            <p class="section-sub">Academic profile and current focus</p>
+          </div>
+        </div>
 
-  <div class="section">
-    <h2>Experience</h2>
-    <ul>
-      <li>DOC Engineer, Huawei Technologies, Islamabad</li>
-      <li>Visiting Lecturer, University of Swat</li>
-      <li>Research Assistant, UET Peshawar</li>
-    </ul>
-  </div>
+        <div class="two-col">
+          <div>
+            <p>
+              I am a Ph.D. candidate in Control Science and Engineering at Jiangsu University. My doctoral work focuses on
+              advanced diagnostic techniques for incipient broken rotor bar faults in induction motors. My broader research
+              interest lies in intelligent diagnostics for rotating electrical machines, especially sensorless and computationally
+              efficient approaches based on current signatures and signal processing.
+            </p>
+            <p>
+              Alongside research, I have experience in teaching, embedded and computer systems, telecommunications support,
+              and interdisciplinary engineering applications. I am interested in contributing to high-quality research in intelligent
+              diagnostics, electrical machines, signal processing, and engineering systems that connect theory with deployable practice.
+            </p>
+          </div>
 
-  <div class="section">
-    <h2>Skills</h2>
-    <ul>
-      <li>Python, C, C++, C#, Verilog HDL, PHP, HTML</li>
-      <li>MATLAB, LaTeX, TensorFlow, PyTorch</li>
-      <li>Linux, Windows</li>
-    </ul>
-  </div>
+          <div class="info-box">
+            <h3>Research Interests</h3>
+            <div class="tags">
+              <span class="tag">Motor fault diagnosis</span>
+              <span class="tag">Electrical machine monitoring</span>
+              <span class="tag">Signal processing</span>
+              <span class="tag">Machine learning for diagnostics</span>
+              <span class="tag">Industrial monitoring</span>
+              <span class="tag">Current signature analysis</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
 
-  <div class="section">
-    <h2>CV</h2>
-    <p>
-     <a href="SHAWKAT%20ALI%20CV.pdf" target="_blank">Download my CV</a>
+    <section id="research" class="section">
+      <div class="section-card">
+        <div class="section-head">
+          <div>
+            <h2>Research Overview</h2>
+            <p class="section-sub">Themes, methods, and applied direction</p>
+          </div>
+        </div>
 
-    </p>
-  </div>
+        <div class="grid-3">
+          <div class="info-box">
+            <h3>Induction Motor Fault Diagnosis</h3>
+            <p>
+              Development of reliable methods for early detection of broken rotor bar faults under weak-signature conditions,
+              including incipient faults, low load, and challenging spectral environments.
+            </p>
+          </div>
+          <div class="info-box">
+            <h3>Signal Processing Methods</h3>
+            <p>
+              Use of envelope analysis, Goertzel-based spectral estimation, orthogonal-axis rectification, APCA, and dual-signature
+              confirmation strategies to improve diagnostic confidence and reduce false positives.
+            </p>
+          </div>
+          <div class="info-box">
+            <h3>Practical Engineering Deployment</h3>
+            <p>
+              Emphasis on low-cost, sensorless, and computationally efficient diagnostic frameworks suitable for laboratory validation,
+              industrial monitoring, and future intelligent maintenance systems.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
 
-  <p class="small">© 2026 Shawkat Ali</p>
+    <section id="publications" class="section">
+      <div class="section-card">
+        <div class="section-head">
+          <div>
+            <h2>Selected Publications</h2>
+            <p class="section-sub">Accepted, under-review, and prior scholarly work</p>
+          </div>
+        </div>
 
+        <div class="pub-list">
+          <article class="pub">
+            <div class="pub-title">Orthogonal Axis Rectification and Goertzel Analysis for Reliable Detection of Broken Rotor Bar Faults in Induction Motor</div>
+            <div class="pub-meta">S. Ali, X. Song, W. Zhao, and H. Fan • Chinese Journal of Electrical Engineering • Accepted, 2026</div>
+            <p>
+              Presents a reliable diagnostic framework for broken rotor bar detection using orthogonal-axis rectification and Goertzel analysis,
+              with strong performance under low-load and low-frequency operating conditions.
+            </p>
+          </article>
+
+          <article class="pub">
+            <div class="pub-title">A Dual-Signature Rotor Fault Diagnosis Method Using Envelope Modulation and Slip Confirmation</div>
+            <div class="pub-meta">S. Ali, X. Song, and W. Zhao • Chinese Journal of Electrical Engineering • Accepted, 2026</div>
+            <p>
+              Proposes a dual-confirmation strategy that combines envelope modulation and slip-based consistency checking to enhance the reliability
+              of broken rotor bar diagnosis.
+            </p>
+          </article>
+
+          <article class="pub">
+            <div class="pub-title">A Novel Cost-Effective Fault Diagnosis Method for Incipient Detection of Broken Rotor Bar in Induction Motor</div>
+            <div class="pub-meta">S. Ali, X. Song, and W. Zhao • IEEJ Transactions on Electrical and Electronic Engineering • Under review, 2026</div>
+            <p>
+              Introduces a low-cost framework using adaptive principal component analysis and Goertzel-based estimation for incipient rotor bar fault detection,
+              with a sensorless confirmation mechanism based on rotor-speed-related frequency estimation.
+            </p>
+          </article>
+
+          <article class="pub">
+            <div class="pub-title">A practical approach to consensus based control of multi-agent systems</div>
+            <div class="pub-meta">S. Ali, S. Ahmed, and S. N. Khan Marwat • 2018 International Symposium on Recent Advances in Electrical Engineering (RAEE)</div>
+            <p>
+              Earlier work on distributed consensus control, addressing coordination and power mismatch problems in multi-agent systems.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-card">
+        <div class="section-head">
+          <div>
+            <h2>Education</h2>
+            <p class="section-sub">Academic training</p>
+          </div>
+        </div>
+
+        <div class="timeline-list">
+          <div class="timeline-item">
+            <span class="time">Apr 2020 – Expected Jun 2026</span>
+            <h3>Ph.D. in Control Science and Engineering</h3>
+            <p class="muted">Jiangsu University, Zhenjiang, P.R. China</p>
+            <p>Dissertation: Advanced Diagnostic Techniques for Incipient Broken Rotor Bar Fault in Induction Motors.</p>
+          </div>
+          <div class="timeline-item">
+            <span class="time">Feb 2016 – Nov 2018</span>
+            <h3>M.Sc. in Computer Systems Engineering</h3>
+            <p class="muted">University of Engineering &amp; Technology, Peshawar, Pakistan</p>
+            <p>Thesis: Consensus control of multi-agent systems.</p>
+          </div>
+          <div class="timeline-item">
+            <span class="time">Sept 2010 – Jun 2014</span>
+            <h3>B.Sc. in Computer Systems Engineering</h3>
+            <p class="muted">University of Engineering &amp; Technology, Peshawar, Pakistan</p>
+            <p>Thesis: OBD2, Android, and Open ERP-Based Vehicles 3M System.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="experience" class="section">
+      <div class="section-card">
+        <div class="section-head">
+          <div>
+            <h2>Professional Experience</h2>
+            <p class="section-sub">Teaching, research, and industry experience</p>
+          </div>
+        </div>
+
+        <div class="timeline-list">
+          <div class="timeline-item">
+            <span class="time">Aug 2022 – Mar 2023</span>
+            <h3>DOC Engineer</h3>
+            <p class="muted">Global Service Center, Huawei Technologies, Islamabad, Pakistan</p>
+            <p>Worked in network and IT system integration shared service delivery, with quality assurance control and project support for the PHP GLOBE FBB project.</p>
+          </div>
+
+          <div class="timeline-item">
+            <span class="time">Sep 2015 – Aug 2022</span>
+            <h3>Visiting Lecturer</h3>
+            <p class="muted">University of Swat, Pakistan</p>
+            <p>Taught core courses in computer engineering and related subjects, and designed course materials, examinations, and student assessments.</p>
+          </div>
+
+          <div class="timeline-item">
+            <span class="time">Aug 2014 – Aug 2015</span>
+            <h3>Research Assistant</h3>
+            <p class="muted">University of Engineering &amp; Technology, Peshawar, Pakistan</p>
+            <p>Designed hardware and algorithms for automatic OBD-II protocol implementation and contributed to a real-time vehicle monitoring and management system.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="awards" class="section">
+      <div class="section-card">
+        <div class="section-head">
+          <div>
+            <h2>Awards, Service, and Skills</h2>
+            <p class="section-sub">Academic recognition and professional contribution</p>
+          </div>
+        </div>
+
+        <div class="grid-3">
+          <div class="info-box">
+            <h3>Honors and Awards</h3>
+            <ul class="clean">
+              <li>Excellent Project Award, Discover Jiangsu International Summer Program, Jiangsu University, 2024</li>
+              <li>CSC Scholarship, P.R. China, 2023–2026</li>
+              <li>Travel Grant / Research Assistantship Support, UET Peshawar, 2018</li>
+              <li>Final Year Project distinction under an HEC Pakistan-funded project, 2014</li>
+            </ul>
+          </div>
+
+          <div class="info-box">
+            <h3>Professional Service</h3>
+            <ul class="clean">
+              <li>Reviewer for IEEE Access</li>
+              <li>Reviewer for IEEE Transactions on Instrumentation and Measurement</li>
+              <li>Reviewer for IEEE Journal of Emerging and Selected Topics in Industrial Electronics</li>
+              <li>Academic and student leadership roles at UET Peshawar</li>
+            </ul>
+          </div>
+
+          <div class="info-box">
+            <h3>Technical Skills</h3>
+            <ul class="clean">
+              <li>Programming: C, C++, C#, Python, Verilog HDL, PHP, HTML</li>
+              <li>Tools: MATLAB, LaTeX, TensorFlow, PyTorch, Proteus, Arduino, Unity 3D, WordPress</li>
+              <li>Platforms: Linux, Windows</li>
+              <li>Languages: English, Urdu/Hindi, Pashto, Arabic, Chinese (HSK-3)</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="section">
+      <div class="section-card">
+        <div class="section-head">
+          <div>
+            <h2>Contact</h2>
+            <p class="section-sub">Academic correspondence and links</p>
+          </div>
+        </div>
+
+        <div class="grid-2">
+          <div class="contact-card">
+            <h3>Email</h3>
+            <p><a href="mailto:engrshaukatswati@gmail.com">engrshaukatswati@gmail.com</a></p>
+            <p><a href="mailto:Shawkatali@stmail.ujs.edu.cn">Shawkatali@stmail.ujs.edu.cn</a></p>
+          </div>
+
+          <div class="contact-card">
+            <h3>Profiles</h3>
+            <p><a href="https://github.com/shawkat868" target="_blank">GitHub</a></p>
+            <p><a href="#">Google Scholar</a> <span class="muted">(add your link)</span></p>
+            <p><a href="#">LinkedIn</a> <span class="muted">(add your link)</span></p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer container">
+    © 2026 Shawkat Ali. Built with GitHub Pages.
+  </footer>
 </body>
 </html>
