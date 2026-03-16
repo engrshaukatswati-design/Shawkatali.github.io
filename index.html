@@ -3,12 +3,15 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Shawkat Ali </title>
-  <meta name="description" content="Academic homepage of Shawkat Ali, Ph.D. candidate at Jiangsu University, working on electrical machine diagnostics, signal processing, and induction motor fault diagnosis." />
+  <title>Shawkat Ali</title>
+  <meta
+    name="description"
+    content="Academic homepage of Shawkat Ali, Ph.D. candidate at Jiangsu University, working on electrical machine diagnostics, signal processing, and induction motor fault diagnosis."
+  />
   <style>
     :root {
       --bg: #f4f7fb;
-      --surface: rgba(255,255,255,0.88);
+      --surface: rgba(255, 255, 255, 0.88);
       --surface-strong: #ffffff;
       --surface-soft: #f7faff;
       --text: #162337;
@@ -25,6 +28,7 @@
 
     * { box-sizing: border-box; }
     html { scroll-behavior: smooth; }
+
     body {
       margin: 0;
       font-family: "Inter", "Segoe UI", Arial, sans-serif;
@@ -38,7 +42,7 @@
 
     body.dark {
       --bg: #0e1625;
-      --surface: rgba(18,28,44,0.86);
+      --surface: rgba(18, 28, 44, 0.86);
       --surface-strong: #152033;
       --surface-soft: #1a273c;
       --text: #ecf2ff;
@@ -137,7 +141,11 @@
       align-items: center;
       padding: 34px;
       border-radius: 32px;
-      background: linear-gradient(135deg, color-mix(in srgb, var(--surface-strong) 94%, transparent) 0%, color-mix(in srgb, var(--surface-soft) 84%, transparent) 100%);
+      background: linear-gradient(
+        135deg,
+        color-mix(in srgb, var(--surface-strong) 94%, transparent) 0%,
+        color-mix(in srgb, var(--surface-soft) 84%, transparent) 100%
+      );
       border: 1px solid var(--line);
       box-shadow: var(--shadow);
     }
@@ -152,11 +160,14 @@
     .portrait-shell::before {
       content: "";
       position: absolute;
-      inset: auto;
       width: 280px;
       height: 280px;
       border-radius: 32px;
-      background: linear-gradient(135deg, color-mix(in srgb, var(--primary) 20%, transparent) 0%, color-mix(in srgb, var(--primary-2) 8%, transparent) 100%);
+      background: linear-gradient(
+        135deg,
+        color-mix(in srgb, var(--primary) 20%, transparent) 0%,
+        color-mix(in srgb, var(--primary-2) 8%, transparent) 100%
+      );
       transform: rotate(-6deg);
     }
 
@@ -181,7 +192,7 @@
       color: var(--primary);
       font-size: 0.9rem;
       font-weight: 800;
-      margin-bottom: 14px;
+      margin-bottom: 10px;
     }
 
     h1 {
@@ -219,15 +230,12 @@
       box-shadow: var(--shadow-soft);
     }
 
-    .hero-actions,
-    .quick-links {
+    .hero-actions {
       display: flex;
       flex-wrap: wrap;
       gap: 12px;
+      margin-top: 10px;
     }
-
-    .hero-actions { margin-top: 10px; }
-    .quick-links { margin-top: 16px; }
 
     .btn {
       display: inline-flex;
@@ -241,7 +249,10 @@
       transition: transform 0.18s ease, box-shadow 0.18s ease, background 0.18s ease;
     }
 
-    .btn:hover { transform: translateY(-1px); text-decoration: none; }
+    .btn:hover {
+      transform: translateY(-1px);
+      text-decoration: none;
+    }
 
     .btn-primary {
       background: linear-gradient(135deg, var(--primary) 0%, var(--primary-2) 100%);
@@ -254,6 +265,37 @@
       color: var(--primary);
       border-color: var(--line);
       box-shadow: var(--shadow-soft);
+    }
+
+    .profile-icons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 18px;
+    }
+
+    .profile-icon {
+      width: 48px;
+      height: 48px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      background: var(--surface-strong);
+      box-shadow: var(--shadow-soft);
+      transition: transform 0.18s ease, box-shadow 0.18s ease;
+    }
+
+    .profile-icon:hover {
+      transform: translateY(-2px);
+      text-decoration: none;
+    }
+
+    .profile-icon img {
+      width: 23px;
+      height: 23px;
+      object-fit: contain;
     }
 
     main { padding-bottom: 68px; }
@@ -325,7 +367,6 @@
     }
 
     .card h3,
-    .pub h3,
     .timeline-item h3,
     .contact-card h3 {
       margin: 0 0 8px;
@@ -489,7 +530,7 @@
         <a href="#about">About</a>
         <a href="#research">Research</a>
         <a href="#publications">Publications</a>
-	<a href="#education">Education</a>
+        <a href="#education">Education</a>
         <a href="#experience">Experience</a>
         <a href="#contact">Contact</a>
         <button class="toggle" id="themeToggle" type="button">Dark mode</button>
@@ -504,33 +545,44 @@
           <img src="profile.png" alt="Shawkat Ali" class="portrait" />
         </div>
         <div>
-          
           <h1>Shawkat Ali</h1>
           <p class="lead">
             I work on electrical machine condition monitoring, signal processing, and induction motor fault diagnosis,
             with a particular focus on computationally efficient and reliable methods for detecting incipient faults.
           </p>
 
-	  <div class="eyebrow">Current address • Jiangsu University, Zhenjiang, China</div>
-	  <div class="eyebrow">Permanent address • Swat, Pakistan</div>
+          <div class="eyebrow">Current address • Jiangsu University, Zhenjiang, China</div><br>
+          <div class="eyebrow">Permanent address • Swat, Pakistan</div>
+
           <div class="meta">
-            <span class="pill">Research interest: Electrical machine diagnostics, Signal processing, Condition monitoring, Multi-agent systems</span>
+            <span class="pill">Research interests: Electrical machine diagnostics, signal processing, condition monitoring, multi-agent systems</span>
           </div>
 
           <div class="hero-actions">
-            <a class="btn btn-primary" href="CV.pdf" target="_blank">Download CV</a>
+            <a class="btn btn-primary" href="CV.pdf" target="_blank" rel="noopener noreferrer">Download CV</a>
             <a class="btn btn-secondary" href="mailto:engrshaukatswati@gmail.com">Email Me</a>
             <a class="btn btn-secondary" href="#publications">Selected Publications</a>
           </div>
 
-          <div class="quick-links">
-            <a class="btn btn-secondary" href="https://github.com/shawkat868" target="_blank">GitHub</a>
-            <a class="btn btn-secondary" href="https://scholar.google.com/citations?hl=en&view_op=list_works&gmla=AF9nlQuF5YuyCqU9mroGS3DKCpnnCL9INHxUL_qqAZs-RYZFh8CfyLk3bhuxvJ41mc1g51te1Z4IU-cmZaFG-A&user=uFo589IAAAAJ">Google Scholar</a>
-            <a class="btn btn-secondary" href="https://www.linkedin.com/in/shawkat-ali-67354b11">LinkedIn</a>
-	    <a class="btn btn-secondary" href="https://webofscience.clarivate.cn/wos/author/record/T-7919-2019">Web of Science</a>
-	    <a class="btn btn-secondary" href="https://www.researchgate.net/profile/Shawkat-Ali-5?ev=hdr_xprf">Research Gate</a>
-	    <a class="btn btn-secondary" href="https://orcid.org/my-orcid?orcid=0009-0003-3976-2723">ORCID</a>
- 
+          <div class="profile-icons">
+            <a class="profile-icon" href="https://github.com/shawkat868" target="_blank" rel="noopener noreferrer" title="GitHub">
+              <img src="github.svg" alt="GitHub" />
+            </a>
+            <a class="profile-icon" href="https://scholar.google.com/citations?hl=en&view_op=list_works&gmla=AF9nlQuF5YuyCqU9mroGS3DKCpnnCL9INHxUL_qqAZs-RYZFh8CfyLk3bhuxvJ41mc1g51te1Z4IU-cmZaFG-A&user=uFo589IAAAAJ" target="_blank" rel="noopener noreferrer" title="Google Scholar">
+              <img src="Google_Scholar.svg" alt="Google Scholar" />
+            </a>
+            <a class="profile-icon" href="https://www.linkedin.com/in/shawkat-ali-67354b11" target="_blank" rel="noopener noreferrer" title="LinkedIn">
+              <img src="LinkedIn.svg" alt="LinkedIn" />
+            </a>
+            <a class="profile-icon" href="https://webofscience.clarivate.cn/wos/author/record/T-7919-2019" target="_blank" rel="noopener noreferrer" title="Web of Science">
+              <img src="wos.png" alt="Web of Science" />
+            </a>
+            <a class="profile-icon" href="https://www.researchgate.net/profile/Shawkat-Ali-5?ev=hdr_xprf" target="_blank" rel="noopener noreferrer" title="ResearchGate">
+              <img src="ResearchGate.svg" alt="ResearchGate" />
+            </a>
+            <a class="profile-icon" href="https://orcid.org/0009-0003-3976-2723" target="_blank" rel="noopener noreferrer" title="ORCID">
+              <img src="ORCID.svg" alt="ORCID" />
+            </a>
           </div>
         </div>
       </div>
@@ -569,13 +621,17 @@
         <div class="two-col">
           <div>
             <p>
-              Currently, I am working towards my Ph.D. degree in Control Science and Engineering at Jiangsu University. My doctoral research investigates advanced diagnostic techniques for incipient broken rotor bar faults in induction motors. I am particularly interested in sensorless and low-cost diagnostic frameworks that can improve reliability under weak fault signatures, spectral interference, and low-frequency operating conditions.
+              Currently, I am working towards my Ph.D. degree in Control Science and Engineering at Jiangsu University.
+              My doctoral research investigates advanced diagnostic techniques for incipient broken rotor bar faults in induction motors.
+              I am particularly interested in sensorless and low-cost diagnostic frameworks that can improve reliability under weak fault signatures,
+              spectral interference, and low-frequency operating conditions.
             </p>
             <p>
-              My broader interests include signal processing for electrical machines, practical monitoring methods for industrial systems, and intelligent diagnostic approaches that connect theory, experimental validation, and real-world implementation.
+              My broader interests include signal processing for electrical machines, practical monitoring methods for industrial systems,
+              and intelligent diagnostic approaches that connect theory, experimental validation, and real-world implementation.
             </p>
- <p>
-              Moreover, I am also interested in Multi-agent systems and Smart grids.
+            <p>
+              Moreover, I am also interested in multi-agent systems and smart grids.
             </p>
           </div>
           <div class="card">
@@ -587,8 +643,8 @@
               <span class="tag">Goertzel-based estimation</span>
               <span class="tag">Envelope analysis</span>
               <span class="tag">Machine learning for diagnostics</span>
-	     <span class="tag">Multi-agent systems</span>
-	     <span class="tag">Smart grids</span>
+              <span class="tag">Multi-agent systems</span>
+              <span class="tag">Smart grids</span>
             </div>
           </div>
         </div>
@@ -635,10 +691,10 @@
             </div>
           </div>
 
-          <div class="grid-3" style="grid-template-columns:1fr;">
+          <div class="grid-3" style="grid-template-columns: 1fr;">
             <div class="card">
               <h3>Signal Processing Methods</h3>
-              <p>Envelope analysis, orthogonal-axis rectification, Goertzel estimation, adaptive PCA, and fault-sensitive component extraction (PCIP- Principal Component Inspired Projection). </p>
+              <p>Envelope analysis, orthogonal-axis rectification, Goertzel estimation, adaptive PCA, and fault-sensitive component extraction (PCIP – Principal Component Inspired Projection).</p>
             </div>
             <div class="card">
               <h3>Application Goal</h3>
@@ -682,7 +738,7 @@
           </article>
 
           <article class="pub">
-            <div class="pub-title">A practical approach to consensus based control of multi-agent systems</div>
+            <div class="pub-title">A Practical Approach to Consensus Based Control of Multi-Agent Systems</div>
             <div class="pub-meta">S. Ali, S. Ahmed, and S. N. Khan Marwat • 2018 International Symposium on Recent Advances in Electrical Engineering</div>
             <p>An earlier contribution on consensus-based control for multi-agent systems, addressing coordination and power mismatch issues in distributed control settings.</p>
           </article>
@@ -812,13 +868,12 @@
           </div>
           <div class="contact-card">
             <h3>Profiles</h3>
-            <p><a href="https://github.com/shawkat868" target="_blank">GitHub</a></p>
-            <p> <a href="https://scholar.google.com/citations?hl=en&view_op=list_works&gmla=AF9nlQuF5YuyCqU9mroGS3DKCpnnCL9INHxUL_qqAZs-RYZFh8CfyLk3bhuxvJ41mc1g51te1Z4IU-cmZaFG-A&user=uFo589IAAAAJ">Google Scholar</a></p>
-	    <p> <a href="https://www.linkedin.com/in/shawkat-ali-67354b11">LinkedIn</a></p>
-            <p> <a href="https://webofscience.clarivate.cn/wos/author/record/T-7919-2019">Web of Science</a></p>
-	    <p> <a href="https://www.researchgate.net/profile/Shawkat-Ali-5?ev=hdr_xprf">Research Gate</a></p>
-	    <p> <a href="https://orcid.org/my-orcid?orcid=0009-0003-3976-2723">ORCID</a></p>
-
+            <p><a href="https://github.com/shawkat868" target="_blank" rel="noopener noreferrer">GitHub</a></p>
+            <p><a href="https://scholar.google.com/citations?hl=en&view_op=list_works&gmla=AF9nlQuF5YuyCqU9mroGS3DKCpnnCL9INHxUL_qqAZs-RYZFh8CfyLk3bhuxvJ41mc1g51te1Z4IU-cmZaFG-A&user=uFo589IAAAAJ" target="_blank" rel="noopener noreferrer">Google Scholar</a></p>
+            <p><a href="https://www.linkedin.com/in/shawkat-ali-67354b11" target="_blank" rel="noopener noreferrer">LinkedIn</a></p>
+            <p><a href="https://webofscience.clarivate.cn/wos/author/record/T-7919-2019" target="_blank" rel="noopener noreferrer">Web of Science</a></p>
+            <p><a href="https://www.researchgate.net/profile/Shawkat-Ali-5?ev=hdr_xprf" target="_blank" rel="noopener noreferrer">ResearchGate</a></p>
+            <p><a href="https://orcid.org/0009-0003-3976-2723" target="_blank" rel="noopener noreferrer">ORCID</a></p>
           </div>
         </div>
       </div>
@@ -826,7 +881,7 @@
   </main>
 
   <footer class="footer container">
-    © 2026 Shawkat Ali. 
+    © 2026 Shawkat Ali.
   </footer>
 
   <script>
